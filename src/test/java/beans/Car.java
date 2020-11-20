@@ -5,7 +5,7 @@ public class Car {
   private final Integer id;
   private final String make;
   private final String model;
-  private final String color;
+  private  String color;
   private final Integer year;
   private final Double price;
 
@@ -34,6 +34,10 @@ public class Car {
 
   public String getColor() {
     return color;
+  }
+
+  public void setColor(String color) {
+    this.color = color;
   }
 
   public Integer getYear() {

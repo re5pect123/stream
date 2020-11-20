@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import beans.Car;
 import com.google.common.collect.ImmutableList;
+
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
@@ -55,7 +57,21 @@ public class Lecture7 {
         .average()
         .orElse(0);
     System.out.println(averagePrice);
+  }
 
+  @Test
+  public void returnMap() throws IOException {
+    List<Car> cars = MockData.getCars();
+
+    List<Car> red = cars.stream()
+            .limit(10)
+            .map(depositLimit -> {
+              depositLimit.setColor("red");
+              return depositLimit;
+            })
+            .collect(Collectors.toList());
+
+    red.forEach(System.out::println);
   }
 
   @Test
